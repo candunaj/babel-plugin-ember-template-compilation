@@ -21,6 +21,7 @@ export interface PreprocessOptions {
   mode?: 'codemod' | 'precompile';
   strictMode?: boolean;
   locals?: string[];
+  localsWithNames?: { [key: string]: string };
 }
 
 export function assertTemplateCompiler(
