@@ -48,9 +48,9 @@ describe('htmlbars-inline-precompile', function () {
       /*
         hello
       */
-      function () {
+      (()=>function () {
         return "hello";
-      });
+      })());
     `);
   });
 
@@ -67,7 +67,7 @@ describe('htmlbars-inline-precompile', function () {
       /*
         hello
       */
-      precompiledFromPath(hello));
+      (()=>precompiledFromPath(hello))());
     `);
   });
 
@@ -163,7 +163,7 @@ describe('htmlbars-inline-precompile', function () {
         /*
           hello
         */
-        precompiled("hello"));
+        (() => precompiled("hello"))());
       }
     `);
   });
@@ -206,7 +206,7 @@ describe('htmlbars-inline-precompile', function () {
         /*
           hello *\\/
         */
-        precompiled("hello */"));
+        (()=>precompiled("hello */"))());
       }
     `);
   });
@@ -257,7 +257,7 @@ describe('htmlbars-inline-precompile', function () {
       /*
         hello
       */
-      precompiled("hello"));
+      (()=>precompiled("hello"))());
     `);
   });
 
@@ -286,7 +286,7 @@ describe('htmlbars-inline-precompile', function () {
       /*
         hello
       */
-      precompiled("hello"));
+      (()=>precompiled("hello"))());
     `);
   });
 
@@ -324,12 +324,12 @@ describe('htmlbars-inline-precompile', function () {
       /*
         hello
       */
-      precompiled("hello"));
+      (()=>precompiled("hello"))());
       let b = createTemplateFactory(
       /*
         hello
       */
-      precompiled("hello"));
+      (()=>precompiled("hello"))());
     `);
   });
 
@@ -374,12 +374,12 @@ describe('htmlbars-inline-precompile', function () {
         /*
           hello
         */
-        precompiled("hello"));
+        (()=>precompiled("hello"))());
         var compiled2 = (0, _templateFactory.createTemplateFactory)(
         /*
           goodbye
         */
-        precompiled("goodbye"));
+        (()=>precompiled("goodbye"))());
       });
     `);
   });
@@ -402,7 +402,7 @@ describe('htmlbars-inline-precompile', function () {
       /*
         hello
       */
-      precompiled("hello"));
+      (()=>precompiled("hello"))());
       createTemplateFactory('whatever here');
     `);
   });
@@ -425,7 +425,7 @@ describe('htmlbars-inline-precompile', function () {
         /*
           hello
         */
-        precompiled("hello"));
+        (()=>precompiled("hello"))());
       });
     `);
   });
@@ -446,7 +446,7 @@ describe('htmlbars-inline-precompile', function () {
       /*
         some emoji goes 💥
       */
-      precompiled("some emoji goes 💥"));
+      (()=>precompiled("some emoji goes 💥"))());
     `);
   });
 
@@ -476,7 +476,7 @@ describe('htmlbars-inline-precompile', function () {
       /*
         hello
       */
-      precompiled("hello"));
+      (()=>precompiled("hello"))());
     `);
   });
 
@@ -545,7 +545,7 @@ describe('htmlbars-inline-precompile', function () {
       /*
         hello
       */
-      precompiled("hello"));
+      (()=>precompiled("hello"))())
     `);
   });
 
@@ -1372,11 +1372,11 @@ describe('htmlbars-inline-precompile', function () {
     it('errors if scope contains mismatched keys/values', function () {
       expect(() => {
         transform(
-          "import { precompileTemplate } from '@ember/template-compilation';\nvar compiled = precompileTemplate('hello', { scope: () => ({ foo: bar }) });"
-        );
+        "import { precompileTemplate } from '@ember/template-compilation';\nvar compiled = precompileTemplate('hello', { scope: () => ({ foo: bar }) });"
+      );
       }).toThrow(
         /Scope objects for `precompileTemplate` may only contain direct references to in-scope values, e.g. { foo } or { foo: foo }/
-      );
+        );
     });
 
     it('errors if scope is not an object', function () {
