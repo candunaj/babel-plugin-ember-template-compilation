@@ -6,8 +6,6 @@
   "license": "MIT",
   "author": "Edward Faulkner <edward@eaf4.com>",
   "scripts": {
-    "prepare": "tsc",
-    "build": "tsc",
     "pretest": "tsc",
     "lint": "eslint --cache --ext .ts .",
     "test": "jest",
